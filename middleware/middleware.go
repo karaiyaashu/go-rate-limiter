@@ -31,7 +31,7 @@ func RateLimit(c *gin.Context) {
 func GetClientIdentifier(c *gin.Context) string {
 	ip := c.ClientIP()
 	url := c.Request.URL.Path
-	data := fmt.Sprint("%s-%s", ip, url)
+	data := fmt.Sprintf("%s-%s", ip, url)
 	h := md5.Sum([]byte(data))
 	hash := new(big.Int).SetBytes(h[:]).Text(62)
 	return hash
